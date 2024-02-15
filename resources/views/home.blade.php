@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Laravel</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    @vite('resources/js/app.js')
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>Trains Table</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Company</th>
+                            <th>Departure Station</th>
+                            <th>Arrival Station</th>
+                            <th>Departur Date</th>
+                            <th>Arrival Date</th>
+                            <th>Departure Time</th>
+                            <th>Arrival Time</th>
+                            <th>Train Code</th>
+                            <th>In time</th>
+                            <th>Cancelled</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($filtered_trains as $train)
+                            <tr>
+                                <td>{{ $train['company'] }}</td>
+                                <td>{{ $train['departure_station'] }}</td>
+                                <td>{{ $train['arrival_station'] }}</td>
+                                <td>{{ $train['departure_date'] }}</td>
+                                <td>{{ $train['arrival_date'] }}</td>
+                                <td>{{ $train['departure_time'] }}</td>
+                                <td>{{ $train['arrival_time'] }}</td>
+                                <td>{{ $train['train_code'] }}</td>
+                                <td>{{ $train['in_time'] == 1 ? 'YES' : '' }}</td>
+                                <td>{{ $train['cancelled'] == 1 ? 'YES' : '' }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
