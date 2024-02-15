@@ -15,16 +15,16 @@
 
 </head>
 
-<body>
-    <div class="container">
-        <div class="row">
+<body class="bg-dark">
+    <div class="container py-5">
+        <div class="row text-center">
             <div class="col-12">
-                <h1>Trains Table</h1>
+                <h1 class="text-white fw-bolder text-uppercase">Trains Table</h1>
             </div>
         </div>
-        <div class="row">
+        <div class="row py-5">
             <div class="col-12">
-                <table class="table table-striped">
+                <table class="table table-warning table-striped">
                     <thead>
                         <tr>
                             <th>Company</th>
