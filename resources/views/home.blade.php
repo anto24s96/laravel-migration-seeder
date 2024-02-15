@@ -35,23 +35,29 @@
                             <th>Departure Time</th>
                             <th>Arrival Time</th>
                             <th>Train Code</th>
-                            <th>In time</th>
-                            <th>Cancelled</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($filtered_trains as $train)
                             <tr>
-                                <td>{{ $train['company'] }}</td>
-                                <td>{{ $train['departure_station'] }}</td>
-                                <td>{{ $train['arrival_station'] }}</td>
-                                <td>{{ $train['departure_date'] }}</td>
-                                <td>{{ $train['arrival_date'] }}</td>
-                                <td>{{ $train['departure_time'] }}</td>
-                                <td>{{ $train['arrival_time'] }}</td>
-                                <td>{{ $train['train_code'] }}</td>
-                                <td>{{ $train['in_time'] == 1 ? 'YES' : '' }}</td>
-                                <td>{{ $train['cancelled'] == 1 ? 'YES' : '' }}</td>
+                                <td>{{ $train->company }}</td>
+                                <td>{{ $train->departure_station }}</td>
+                                <td>{{ $train->arrival_station }}</td>
+                                <td>{{ date('d-m-Y', strtotime($train->departure_date)) }}</td>
+                                <td>{{ date('d-m-Y', strtotime($train->arrival_date)) }}</td>
+                                <td>{{ $train->departure_time }}</td>
+                                <td>{{ $train->arrival_time }}</td>
+                                <td>{{ $train->train_code }}</td>
+                                <td>
+                                    @if ($train->in_time)
+                                        In Time
+                                    @elseif($train->cancelled)
+                                        Cancelled
+                                    @else
+                                        Delay
+                                    @endif
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
